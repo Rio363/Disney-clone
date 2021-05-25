@@ -1,0 +1,671 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue: #0077da;
+}
+.overlay {
+  position: absolute;
+  top: 6.3rem;
+  left: 0;
+  min-width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.52);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+.open-menu .overlay {
+  opacity: 1;
+  pointer-events: initial;
+}
+html {
+  font-size: 10px;
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  font-size: 1.6rem;
+  background: rgb(246, 243, 243);
+  font-family: "open sans", sans-serif;
+}
+.lock-body {
+  overflow: hidden;
+}
+a,
+ul {
+  list-style: none;
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  width: 100%;
+  max-width: 160rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.header {
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 6.3rem;
+  z-index: 10;
+}
+.nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.header.empty {
+  display: none;
+}
+.nav-list {
+  position: relative;
+}
+.nav-items-box {
+  position: absolute;
+  top: 4.4rem;
+  left: -2rem;
+  width: 35rem;
+  background: #303030;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  border-radius: 2px;
+  z-index: 20;
+  color: #fff;
+  padding: 1.7rem 2.5rem;
+  opacity: 0;
+  transform: scale(0);
+  transition-delay: 0.4s;
+  /* transition: opacity 0.5s ease; */
+}
+.nav-items-box::before {
+  content: "";
+  position: absolute;
+  top: -0.9rem;
+  left: 5.1%;
+  /* width: 3rem; */
+  /* height: 3rem; */
+  /* background: #303030; */
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 30px solid #303030;
+}
+.nav-list:hover .nav-items-box {
+  opacity: 1;
+  transform: scale(1);
+}
+.nav-link {
+  display: block;
+  transition: color 0.2s ease;
+  font-weight: bold;
+  font-size: 1.4rem;
+  padding: 1.2rem 0;
+}
+.nav-link:hover {
+  color: var(--blue);
+}
+.logo-link {
+  margin-right: 4rem;
+}
+.logo-img {
+  width: 9rem;
+}
+.nav-movies {
+  font-size: 1.4rem;
+  color: #000;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.arrow {
+  display: none;
+}
+.arrow i {
+  font-size: 1rem;
+  color: #9e9d9d;
+}
+.nav-movies:hover {
+  color: var(--blue);
+}
+.hamburger {
+  width: 2rem;
+  height: 1.2rem;
+  padding: 0.2rem;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  opacity: 0;
+  transform: scale(0);
+  z-index: 30;
+  cursor: pointer;
+}
+.line {
+  width: 100%;
+  height: 2px;
+  background: #000;
+  transition: transform 0.5s ease;
+}
+
+/* Showcase Styles */
+.showcase {
+  position: relative;
+  width: 100%;
+  max-width: 160rem;
+  margin: 0 auto;
+  cursor: pointer;
+}
+.showcase-banner {
+  overflow: hidden;
+}
+.showcase-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  padding: 0 8.5%;
+}
+.showcase-content-col {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.showcase-content p {
+  margin-top: 1rem;
+  margin-bottom: 1.7rem;
+  color: #fff;
+}
+.banner-img {
+  width: 100%;
+}
+.banner-img.mobile {
+  display: none;
+}
+.empty {
+  width: 3rem;
+  height: 3rem;
+  pointer-events: none;
+}
+.image-scale {
+  transition: all 0.4s ease;
+}
+.showcase:hover .image-scale {
+  transform: scale(1.04);
+}
+.image-scale:hover {
+  transform: scale(1.04);
+}
+.movie-sticker {
+  width: 40rem;
+}
+.movie-sticker.mobile {
+  display: none;
+}
+
+.btn {
+  background: var(--blue);
+  border: none;
+  color: #fff;
+  display: block;
+  width: 25rem;
+  text-align: center;
+  margin: 0 auto;
+  padding: 1.6rem 4.8rem;
+  border-radius: 10rem;
+  font-size: 1.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.btn:hover {
+  background: rgb(7, 94, 207);
+}
+
+/* Latest Styles */
+.latest {
+  padding-bottom: 6.5rem;
+}
+.latest,
+.movies,
+.parks {
+  padding: 4rem 6rem;
+}
+.section-title {
+  text-align: center;
+  font-size: 2.7rem;
+  font-weight: normal;
+  margin-bottom: 3rem;
+}
+.latest-shows-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.show-card {
+  overflow: hidden;
+  width: 49%;
+  background: #fff;
+}
+.show-card,
+.movie-card {
+  cursor: pointer;
+}
+.show-card-content {
+  padding: 2.7rem 0;
+  padding-left: 2.5rem;
+  min-height: 12rem;
+}
+.show-card-title {
+  font-weight: normal;
+  color: #303030;
+}
+.show-card-description {
+  font-size: 1.3rem;
+  line-height: 1.4;
+  margin-top: 1rem;
+}
+.show-img.mobile {
+  display: none;
+}
+.show-img {
+  width: 100%;
+}
+
+/* Movies Styles */
+.movies-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+.movie-card {
+  overflow: hidden;
+  width: 20%;
+}
+.movie-card:not(:last-child) {
+  margin-right: 2.4rem;
+}
+.movie-img {
+  width: 100%;
+}
+.movie-title {
+  color: #303030;
+  font-size: 1.6rem;
+  margin-top: 1rem;
+  transition: color 0.2s ease;
+  letter-spacing: 1px;
+}
+.movie-title:hover {
+  color: var(--blue);
+}
+
+/* Parks Styles */
+.parks {
+  position: relative;
+  padding-bottom: 1.4rem !important;
+}
+.parks .section-title {
+  margin-bottom: 1.5rem;
+}
+.parks-container:hover .banner-img {
+  transform: scale(1.04);
+}
+.parks-container {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.disney-land-icon {
+  width: 35rem;
+  margin-bottom: 1rem;
+}
+.disney-land-icon.mobile {
+  display: none;
+}
+.parks-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 2rem 9%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.parks-content-col {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.parks-content p {
+  color: #fff;
+  margin-bottom: 2rem;
+}
+.parks-content a {
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.parks-content a:hover {
+  text-decoration: underline;
+}
+
+.languages-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  margin-top: 3rem;
+}
+.languages-box ul {
+  display: flex;
+  align-items: center;
+}
+.languages-box p {
+  margin-right: 1rem;
+  font-size: 1.4rem;
+}
+.languages-box li:first-child {
+  border-bottom: 4px solid var(--blue);
+}
+.languages-box li:nth-child(2) {
+  background: rgba(185, 184, 184, 0.589);
+  width: 2px;
+  height: 1.5rem;
+  margin: 0 1rem;
+}
+
+/* Footer Styles */
+.footer {
+  background: #fff;
+  padding: 4rem 0;
+}
+.follow-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.follow-text {
+  margin-right: 2rem;
+}
+.follow-box i {
+  font-size: 2.2rem;
+}
+.follow-box + .logo-img {
+  display: block;
+  margin: 0 auto;
+  margin-top: 6rem;
+}
+
+.footer-links {
+  padding: 2rem 3%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+.footer-link {
+  font-size: 1.1rem;
+  transition: color 0.15s ease;
+}
+.footer-link:hover {
+  color: var(--blue);
+}
+.footer li:not(:last-child) {
+  margin-right: 2rem;
+}
+.copy-right {
+  text-align: center;
+  font-size: 1.1rem;
+}
+.copy-right:last-child {
+  margin-top: 3rem;
+  font-size: 1.6rem;
+}
+@media (max-width: 1150px) {
+  .latest,
+  .movies,
+  .parks {
+    padding: 4rem 4rem;
+  }
+  .footer {
+    padding: 2rem 0;
+  }
+}
+
+@media (max-width: 1100px) {
+  .movie-sticker {
+    width: 27rem;
+  }
+  .disney-land-icon {
+    width: 28rem;
+  }
+}
+@media (max-width: 970px) {
+  .showcase-content {
+    padding: 0 5%;
+  }
+  .movie-sticker {
+    width: 30rem;
+  }
+  .disney-land-icon {
+    width: 26rem;
+  }
+}
+
+@media (max-width: 924px) {
+  .latest-shows-wrapper {
+    flex-flow: column;
+  }
+  .show-card {
+    width: 100%;
+  }
+  .show-card:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+  .latest,
+  .movies,
+  .parks {
+    padding: 2.4rem 2rem;
+  }
+  .movie-card {
+    display: none;
+    width: 50%;
+  }
+  .movie-card:first-child,
+  .movie-card:nth-child(2) {
+    display: block;
+  }
+  .movie-title {
+    font-size: 1.5rem;
+  }
+  .parks-content {
+    padding: 0 4%;
+  }
+  .disney-land-icon {
+    width: 22rem;
+  }
+}
+@media (max-width: 850px) {
+  .movie-sticker {
+    width: 25rem;
+  }
+}
+
+@media (max-width: 775px) {
+  .nav {
+    justify-content: space-between;
+  }
+  .hamburger {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .open-menu .line:first-child {
+    transform: translateY(0.1rem) rotate(-45deg);
+  }
+  .open-menu .line:last-child {
+    transform: translateY(-0.5rem) rotate(45deg);
+  }
+  .logo-link {
+    margin: 0;
+    margin-left: 7%;
+  }
+  .open-menu .logo-link {
+    margin: 0;
+  }
+  .logo-img {
+    width: 7.8rem;
+  }
+  .nav-list {
+    opacity: 0;
+    transform: scale(0);
+  }
+  .arrow {
+    display: block;
+  }
+  .show-nav-list .arrow {
+    transform: rotate(90deg);
+  }
+  .open-menu .nav-list {
+    opacity: 1;
+    transform: scale(1);
+    position: absolute;
+    top: 6.3rem;
+    left: 0;
+    background: #fff;
+    width: 100%;
+    padding: 2rem 5rem;
+    padding-right: 2.5rem;
+    z-index: 10;
+    border-top: 2px solid #000;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+  }
+  .open-menu .nav-list:hover .nav-items-box {
+    opacity: 0;
+    transform: scale(0);
+  }
+  .open-menu .show-nav-list:hover .nav-items-box {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .open-menu .nav-items-box {
+    transition: none;
+    width: 100%;
+    top: 6rem;
+    left: 0;
+    background: #f0f0f0;
+    padding: 0;
+  }
+  .show-nav-list .nav-items-box {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .open-menu .nav-items-box::before {
+    display: none;
+  }
+  .open-menu .nav-link {
+    color: #000;
+    font-size: 1.3rem;
+    font-weight: normal;
+    padding: 1.7rem 1.8rem;
+    border-bottom: 1px solid #c0c0c0;
+  }
+  .open-menu .nav-movies:hover {
+    color: initial;
+  }
+  .empty,
+  .movie-sticker.desktop,
+  .banner-img.desktop,
+  .disney-land-icon.desktop {
+    display: none;
+  }
+  .showcase-content p {
+    color: #303030;
+  }
+
+  .banner-img.mobile,
+  .disney-land-icon.mobile,
+  .movie-sticker.mobile,
+  .open-menu .empty {
+    display: block;
+  }
+  .showcase-content {
+    position: initial;
+    top: initial;
+    left: initial;
+    background: #fff;
+    justify-content: center;
+    align-items: center;
+    padding: 2.7rem 0;
+  }
+
+  .movie-sticker.mobile {
+    width: 50rem;
+  }
+
+  .parks-content {
+    position: initial;
+    top: initial;
+    left: initial;
+    background: #fff;
+    justify-content: center;
+    padding: 2rem 0;
+    padding-bottom: 6rem;
+  }
+  .parks-content p,
+  .parks-content a {
+    color: #303030;
+  }
+  .disney-land-icon {
+    width: initial;
+    width: 83%;
+  }
+}
+
+@media (max-width: 680px) {
+  .show-img.mobile {
+    display: block;
+  }
+  .show-img.desktop {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .movie-sticker.mobile {
+    width: 80%;
+  }
+  .latest,
+  .movies,
+  .parks {
+    padding: 1rem 0rem;
+  }
+  .movie-title {
+    font-size: 1.3rem;
+  }
+  .show-card-content {
+    padding: 2rem;
+  }
+}
